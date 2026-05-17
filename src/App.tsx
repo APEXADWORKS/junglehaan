@@ -19,7 +19,7 @@ import {
   Check
 } from 'lucide-react';
 
-const TARGET_URL = "https://www.junglehaan.vip/share/6IOe3xy";
+const TARGET_URL = "https://www.junglehaan.vip/share/9GQ5nxy";
 
 const StatItem = ({ label, value, sub }: { label: string | React.ReactNode, value: string, sub?: string }) => (
   <div className="flex flex-col items-center flex-1 px-1 border-r border-white/5 last:border-0 hover:bg-white/5 transition-colors py-2 rounded-xl">
