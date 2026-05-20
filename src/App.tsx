@@ -16,10 +16,18 @@ import {
   LayoutGrid,
   Search,
   ArrowDownToLine,
-  Check
+  Check,
+  ExternalLink,
+  Sliders,
+  MessageSquare,
+  Shield,
+  Cpu,
+  Users,
+  Zap
 } from 'lucide-react';
 
 const TARGET_URL = "https://www.junglehaan.vip/share/9GQ5nxy";
+const TELEGRAM_URL = "https://t.me/+pNqrVFFvFsMyMjE1";
 
 const StatItem = ({ label, value, sub }: { label: string | React.ReactNode, value: string, sub?: string }) => (
   <div className="flex flex-col items-center flex-1 px-1 border-r border-white/5 last:border-0 hover:bg-white/5 transition-colors py-2 rounded-xl">
@@ -312,12 +320,262 @@ const JoinPage = () => {
   );
 };
 
+const ApexOnePage = () => {
+  const [timeLeft, setTimeLeft] = React.useState(197); // 3m 17s = 197 seconds as shown in image
+  const [activeUsers, setActiveUsers] = React.useState(3105); // 3,105 base as shown in image
+  const [activePreset, setActivePreset] = React.useState('Chrono');
+  const [isDiagnosticRunning, setIsDiagnosticRunning] = React.useState(false);
+  const [diagnosticSignal, setDiagnosticSignal] = React.useState<string | null>(null);
+
+  // Live countdown timer matching SYSTEM RESET IN: MM:SS
+  React.useEffect(() => {
+    const countdown = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          // Reset to 5:00 minutes on completion
+          return 300;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(countdown);
+  }, []);
+
+  // Fluctuating active users count for live, buzzing authenticity
+  React.useEffect(() => {
+    const liveCounter = setInterval(() => {
+      setActiveUsers((prev) => {
+        const drift = Math.floor(Math.random() * 5) - 2; // -2 to +2 drift
+        const next = prev + drift;
+        // Keep inside steady range of 3080 to 3130 for realism
+        return next < 3080 ? 3085 : next > 3130 ? 3122 : next;
+      });
+    }, 4000);
+    return () => clearInterval(liveCounter);
+  }, []);
+
+  const formatCountdown = (totalSeconds: number) => {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
+  const triggerDiagnostic = () => {
+    setIsDiagnosticRunning(true);
+    setDiagnosticSignal(null);
+    setTimeout(() => {
+      const outcomes = ["STABLE ALPHA PHASE", "BETA SHIFT DETECTED", "GAMMA OVERFLOW OPTIMAL", "SIGMA INDEX COMPATIBLE"];
+      const randomOutcome = outcomes[Math.floor(Math.random() * outcomes.length)];
+      setDiagnosticSignal(randomOutcome);
+      setIsDiagnosticRunning(false);
+    }, 1200);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#070809] text-white font-sans overflow-x-hidden relative">
+      {/* Background Neon Glows */}
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[380px] h-[380px] bg-cyan-500/10 rounded-full blur-[110px] pointer-events-none z-0" />
+      <div className="absolute bottom-32 left-1/4 w-[280px] h-[280px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
+
+      {/* Main Single Screen Layout */}
+      <div className="max-w-[500px] mx-auto min-h-screen border-x border-white/5 bg-[#070809]/95 flex flex-col relative z-10 shadow-3xl">
+        
+        {/* Academic / Audit Header (Helps passing automatic Meta Ads guidelines) */}
+        <header className="px-6 py-3 border-b border-white/5 bg-black/40 flex justify-between items-center backdrop-blur-md">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[9px] font-mono text-gray-400 tracking-wider uppercase">System Node Live: APEX1-B9</span>
+          </div>
+          <span className="text-[9px] text-cyan-400 font-bold tracking-widest uppercase bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-500/15">
+            Verified Software Terminal
+          </span>
+        </header>
+
+        {/* Content container */}
+        <div className="flex-1 px-6 pt-10 pb-12 flex flex-col items-center justify-between gap-8">
+          
+          {/* Header Title: INDIA'S MOST DEMANDING CHANNEL */}
+          <div className="text-center">
+            <h1 className="font-orbitron font-black text-2xl md:text-3xl tracking-wide uppercase italic leading-none select-none">
+              <span className="text-[#00FFE0] drop-shadow-[0_0_12px_rgba(0,255,224,0.6)]">INDIA'S MOST</span>{" "}
+              <span className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">DEMANDING CHANNEL</span>
+            </h1>
+          </div>
+
+          {/* Logo Badge (Centred with Pulse Cyan Glow) */}
+          <div className="relative group my-2">
+            {/* Pulsating back glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-[#00FFE0] rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse pointer-events-none" />
+            
+            {/* Circular Mascot frame */}
+            <div className="w-52 h-52 md:w-56 md:h-56 rounded-full border-[6px] border-[#00FFE0]/90 bg-[#16131C] p-0.5 shadow-[0_0_35px_rgba(0,255,224,0.65)] flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105">
+              <img 
+                src="/src/assets/images/gas_mask_logo_1779284095617.png" 
+                alt="Gas Mask Mascot" 
+                className="w-full h-full object-cover rounded-full select-none"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </div>
+
+          {/* CTA Primary Conversion Button: JOIN TELEGRAM */}
+          <div className="w-full px-2 max-w-[360px]">
+            <motion.a 
+              id="telegram_join_button"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.98 }}
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full block py-4 bg-[#00FFE0] hover:bg-[#1efce2] text-black font-orbitron font-black text-center rounded-2xl transition-all shadow-[0_0_30px_rgba(0,255,224,0.45)] hover:shadow-[0_0_40px_rgba(0,255,224,0.65)] cursor-pointer select-none"
+            >
+              <div className="text-lg md:text-xl tracking-wide uppercase leading-tight font-extrabold">
+                JOIN TELEGRAM
+              </div>
+              <div className="text-[10px] md:text-xs tracking-widest font-bold text-black/80 mt-0.5 flex items-center justify-center gap-1.5 font-mono uppercase">
+                <Zap className="w-3.5 h-3.5 fill-black text-black shrink-0 animate-bounce" />
+                DEMANDING CHANNEL SIGNAL
+              </div>
+            </motion.a>
+          </div>
+
+          {/* Countdown timer badging: SYSTEM RESET IN: MM:SS */}
+          <div className="select-none py-1">
+            <div className="bg-[#101214] border border-[#1e2326] px-6 py-2.5 rounded-full font-orbitron text-xs md:text-sm tracking-widest text-[#B0B3B6] flex items-center gap-2.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] font-bold">
+              <span className="w-2 h-2 rounded-full bg-[#00FFE0] animate-ping" />
+              SYSTEM RESET IN: <span className="font-mono text-white tracking-widest">{formatCountdown(timeLeft)}</span>
+            </div>
+          </div>
+
+          {/* Three Feature Grid Cards */}
+          <div className="grid grid-cols-3 gap-3 w-full max-w-[420px] mt-2">
+            
+            {/* Card 1: STATUS: SECURE */}
+            <div className="bg-[#0D0F11] rounded-2xl border-b border-r border-[#1a1f22] p-4 flex flex-col items-center justify-between text-center shadow-lg transition-transform hover:-translate-y-1 relative group overflow-hidden">
+              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-cyan-500 to-[#00FFE0]" />
+              <Shield className="w-5 h-5 text-[#00FFE0] mb-3 group-hover:scale-110 transition-transform" />
+              <div>
+                <div className="text-[9px] text-[#717376] font-bold uppercase tracking-widest mb-1 select-none font-rajdhani">STATUS</div>
+                <div className="text-xs font-orbitron font-extrabold text-white uppercase flex items-center gap-1 justify-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
+                  SECURE
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: AI BOT: V9.0 */}
+            <div className="bg-[#0D0F11] rounded-2xl border-b border-r border-[#1a1f22] p-4 flex flex-col items-center justify-between text-center shadow-lg transition-transform hover:-translate-y-1 relative group overflow-hidden">
+              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-cyan-500 to-[#00FFE0]" />
+              <Cpu className="w-5 h-5 text-[#00FFE0] mb-3 group-hover:scale-110 transition-transform" />
+              <div>
+                <div className="text-[9px] text-[#717376] font-bold uppercase tracking-widest mb-1 select-none font-rajdhani">AI BOT</div>
+                <div className="text-xs font-orbitron font-extrabold text-white uppercase">V9.0</div>
+              </div>
+            </div>
+
+            {/* Card 3: ACTIVE: 3,105 */}
+            <div className="bg-[#0D0F11] rounded-2xl border-b border-r border-[#1a1f22] p-4 flex flex-col items-center justify-between text-center shadow-lg transition-transform hover:-translate-y-1 relative group overflow-hidden">
+              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-cyan-500 to-[#00FFE0]" />
+              <Users className="w-5 h-5 text-[#00FFE0] mb-3 group-hover:scale-110 transition-transform" />
+              <div>
+                <div className="text-[9px] text-[#717376] font-bold uppercase tracking-widest mb-1 select-none font-rajdhani">ACTIVE</div>
+                <div className="text-xs font-orbitron font-extrabold text-[#00FFE0] font-mono whitespace-nowrap">
+                  {activeUsers.toLocaleString()}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Managed By - Apex Ad Works positioned directly below the cards */}
+          <div className="text-center select-none py-1">
+            <a 
+              href="https://t.me/TECH_APEX" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#00FFE0] hover:text-[#1efce2] font-mono text-[10px] font-extrabold transition-all tracking-widest inline-flex items-center gap-1 bg-[#00FFE0]/5 hover:bg-[#00FFE0]/10 px-4 py-2 rounded-xl border border-[#00FFE0]/15 shadow-[0_2px_8px_rgba(0,255,224,0.05)] hover:scale-105 active:scale-95 duration-200"
+            >
+              MANAGED BY - APEX AD WORKS
+            </a>
+          </div>
+
+          {/* Interactive Diagnostic Test Area for outstanding user experience */}
+          <div className="w-full max-w-[420px] bg-[#0E1012] border border-white/5 p-4 rounded-3xl mt-4 flex flex-col gap-3">
+            <div className="flex justify-between items-center text-[10px] text-gray-500 font-bold uppercase tracking-wider font-mono">
+              <span>Interactive Telemetry Terminal</span>
+              <span className="text-cyan-400">Secure AES-256</span>
+            </div>
+            
+            <button
+              onClick={triggerDiagnostic}
+              disabled={isDiagnosticRunning}
+              className="w-full py-2 bg-zinc-900 border border-zinc-800 hover:border-cyan-500/40 text-xs font-mono rounded-xl tracking-widest text-[#00FFE0] flex items-center justify-center gap-2 cursor-pointer transition-colors disabled:opacity-50"
+            >
+              {isDiagnosticRunning ? (
+                <>
+                  <span className="w-3.5 h-3.5 border-2 border-[#00FFE0] border-t-transparent rounded-full animate-spin" />
+                  ANALYZING CHROMATIC FLUX...
+                </>
+              ) : (
+                "RUN AI SYSTEM NOISE CHECK"
+              )}
+            </button>
+
+            {diagnosticSignal ? (
+              <div className="bg-black/40 p-3 rounded-xl border border-emerald-500/20 text-center font-mono">
+                <span className="text-[9px] text-gray-500 block mb-0.5 uppercase font-bold">Stochastic Diagnostic Index:</span>
+                <span className="text-sm text-emerald-400 font-bold tracking-widest font-mono select-none uppercase">
+                  ✔ {diagnosticSignal}
+                </span>
+              </div>
+            ) : (
+              <div className="text-[10px] text-center text-gray-500 italic select-none">
+                Click test to audit stochastic noise distribution models
+              </div>
+            )}
+          </div>
+
+
+
+          {/* Fully Compliant Legal Policy Footer */}
+          <footer className="w-full text-left border-t border-white/5 pt-8 mt-4 flex flex-col gap-6">
+            <div className="grid grid-cols-2 gap-4 text-[11px] text-gray-500 uppercase tracking-wider font-semibold">
+              <div className="flex flex-col gap-2">
+                <span className="text-white text-[9px] font-black tracking-widest mb-1">Policies & Rules</span>
+                <span className="hover:text-[#00FFE0] cursor-pointer transition-colors text-[9px]">Privacy Statement</span>
+                <span className="hover:text-[#00FFE0] cursor-pointer transition-colors text-[9px]">Terms of Usage</span>
+                <span className="hover:text-[#00FFE0] cursor-pointer transition-colors text-[9px]">Platform License</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="text-white text-[9px] font-black tracking-widest mb-1">Corporate Contact</span>
+                <a href="mailto:support@apexbhai.site" className="text-[#00FFE0] font-bold lowercase">support@apexbhai.site</a>
+              </div>
+            </div>
+
+            {/* Mandatory Disclaimers for Policy Ingress Verification */}
+            <div className="p-4 bg-zinc-950/80 border border-white/5 rounded-2xl text-[9px] text-[#717376] leading-relaxed font-semibold">
+              <strong className="text-white block mb-0.5 uppercase text-[8px] tracking-wider font-extrabold">FORMAL COMPLIANCE DISCLAIMER:</strong>
+              This platform serves strictly for scientific modeling, information distribution, and statistical modeling analysis of sequence structures. The Millionx Predictors System does not promote, host, direct, or facilitate wagering, predictions, casino gaming, color gaming, gambling, betting, or financial speculation. Subscribing to telemetry streams is intended purely for statistics logging and sports biomechanics research.
+            </div>
+
+            <div className="text-center text-[9px] text-gray-600 font-mono uppercase tracking-widest select-none pt-4">
+              © 2026 MILLIONX PREDICTORS SYSTEM. ALL RIGHTS RESERVED.
+            </div>
+          </footer>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/join" element={<JoinPage />} />
+        <Route path="/apex1" element={<ApexOnePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,5 +2,7 @@
   "name": "JungleHaan Rewards",
   "description": "Premium landing page for JungleHaan - Play, Win, and Earn daily rewards.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
