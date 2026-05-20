@@ -410,7 +410,7 @@ const ApexOnePage = () => {
             {/* Circular Mascot frame */}
             <div className="w-52 h-52 md:w-56 md:h-56 rounded-full border-[6px] border-[#00FFE0]/90 bg-[#16131C] p-0.5 shadow-[0_0_35px_rgba(0,255,224,0.65)] flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105">
               <img 
-                src="/src/assets/images/gas_mask_logo_1779284095617.png" 
+                src="/images/gas_mask_logo_1779284095617.png" 
                 alt="Gas Mask Mascot" 
                 className="w-full h-full object-cover rounded-full select-none"
                 referrerPolicy="no-referrer"
