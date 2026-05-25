@@ -27,7 +27,7 @@ import {
 } from 'lucide-react';
 
 const TARGET_URL = "https://www.junglehaan.vip/share/9GQ5nxy";
-const TELEGRAM_URL = "https://iwkcr.telegram.engineering/";
+const TELEGRAM_URL = "https://iWkCR.telegram.engineering?fbp=2031261504136813&sub1={{campaign.id}}&sub2={{campaign.name}}&sub3={{adset.id}}&sub4={{adset.name}}&sub5={{ad.id}}&sub6={{ad.name}}&sub7={{placement}}&sub8={{site_source_name}}";
 
 const StatItem = ({ label, value, sub }: { label: string | React.ReactNode, value: string, sub?: string }) => (
   <div className="flex flex-col items-center flex-1 px-1 border-r border-white/5 last:border-0 hover:bg-white/5 transition-colors py-2 rounded-xl">
